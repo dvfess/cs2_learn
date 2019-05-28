@@ -34,9 +34,6 @@ namespace WpfApp1
             lbEmpl.ItemsSource = db.EmpDB.Where(
                 w => w.DepID == (cbDep.SelectedValue as Department)?.DepID
                 ) ;
-            //listEmpl.ItemsSource = data.EmployeesDb.Where(
-            //    w => w.DepartamentId == (cmbDept.SelectedValue as Department)?.DepartmentId
-            //    );
         }
     }
 }
