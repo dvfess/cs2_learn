@@ -5,19 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="" Height="239.182" Width="391.862">
+        Title="" Height="239.182" Width="391.862" ResizeMode="NoResize">
     <Grid>
-        <Label Content="_Департамент:" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbDep" HorizontalAlignment="Left" Margin="24,32,0,0" VerticalAlignment="Top" Width="141"
-                  ItemsSource="{Binding DepDB}" SelectionChanged="cbDep_SelectionChanged"
-                  SelectedIndex="0">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <ListBox x:Name="lbEmpl" Height="124" Margin="24,76,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="139">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="66" Margin="10,10,0,0" VerticalAlignment="Top" Width="364">
+            <Grid>
+                <Label Content="_Департамент:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cbDep" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="141"
+                          ItemsSource="{Binding DepDB}" SelectionChanged="cbDep_SelectionChanged"
+                          SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Content="Удалить" HorizontalAlignment="Left" Margin="164,33,0,0" VerticalAlignment="Top" Click="Button_Click" Width="55"/>
+                <Button x:Name="btnAddDep"  Content="Добавить" HorizontalAlignment="Left" Margin="164,10,0,0" VerticalAlignment="Top" Click="BtnAddDep_Click"/>
+                <Label Content="Переименовать" HorizontalAlignment="Left" Margin="232,10,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="232,31,0,0" TextWrapping="Wrap" Text="{Binding ElementName=cbDep, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+        </Border>
+        <ListBox x:Name="lbEmpl" Height="100" Margin="10,104,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" SelectionMode="Multiple">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -31,32 +39,30 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="_Работники департамента:" HorizontalAlignment="Left" Margin="24,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="_Работники департамента:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top"/>
         <TextBox  HorizontalAlignment="Left"
-                  Height="23" Margin="240,78,0,0" 
+                  Height="23" Margin="254,104,0,0" 
                   TextWrapping="Wrap" Text="{Binding ElementName=lbEmpl,
                                                     Path=SelectedValue.FirstName, 
                                                     UpdateSourceTrigger=PropertyChanged,
                                                     Mode=TwoWay}" 
                  VerticalAlignment="Top" Width="120"/>
-        <Label Content="Имя" HorizontalAlignment="Left" Margin="210,78,0,0" VerticalAlignment="Top"/>
-        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="185,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="219,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="189,139,0,0" VerticalAlignment="Top"/>
         <TextBox  HorizontalAlignment="Left"
-                  Height="23" Margin="240,106,0,0"
+                  Height="23" Margin="254,139,0,0"
                   TextWrapping="Wrap" Text="{Binding ElementName=lbEmpl,
                                                      Path=SelectedValue.LastName,
                                                      UpdateSourceTrigger=PropertyChanged,
                                                      Mode=TwoWay}"
-                  VerticalAlignment="Top" Width="120"/>
-        <Button Content="X" HorizontalAlignment="Left" Margin="170,32,0,0" VerticalAlignment="Top" Width="22" Click="Button_Click"/>
-        <Label Content="Департамент" HorizontalAlignment="Left" Margin="241,7,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left"
-                 Height="23" Margin="241,30,0,0"
-                 TextWrapping="Wrap"
-                 Text="{Binding ElementName=cbDep,
-                                Path=SelectedValue.Name,
-                                UpdateSourceTrigger=PropertyChanged,
-                                Mode=TwoWay}"
-                 VerticalAlignment="Top" Width="120"/>
+                  VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="btnMoveTo" Content="Перенести в" HorizontalAlignment="Left" Margin="166,184,0,0" VerticalAlignment="Top" Width="83" Click="BtnMoveTo_Click" />
+        <ComboBox x:Name="cbMoveTo" ItemsSource="{Binding DepDB}" HorizontalAlignment="Left" Margin="255,183,0,0" VerticalAlignment="Top" Width="122" SelectedIndex="0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </Window>

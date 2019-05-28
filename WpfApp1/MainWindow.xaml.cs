@@ -35,7 +35,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            db = new CommonDb(30, 500);
+            db = new CommonDb(5, 100);
             this.DataContext = db;
         }
 
@@ -48,7 +48,21 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            db.DeleteDepartment((cbDep.SelectedValue as Department)?.DepID);
+            cbDep.SelectedIndex = 0;
+        }
 
+        private void BtnMoveTo_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < lbEmpl.SelectedItems.Count; i++)
+            {
+                (lbEmpl.SelectedItems[i] as Employee).DepID = (cbMoveTo.SelectedItem as Department).DepID;
+            }
+        }
+
+        private void BtnAddDep_Click(object sender, RoutedEventArgs e)
+        {
+            db.AddDerartment();
         }
     }
 }
