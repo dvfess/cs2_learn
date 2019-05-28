@@ -10,12 +10,14 @@ namespace WpfApp1
     {
         public int DepID { get; set; }
         public int EmpID { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public Employee(int depid, string name)
+        public Employee(int depid, string name, string last)
         {
             DepID = depid;
-            Name = name;
+            FirstName = name;
+            LastName = last;
         }
     }
 }

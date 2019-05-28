@@ -25,7 +25,7 @@ namespace WpfApp1
 
             for (int i = 0; i < empAmount; i++)
             {
-                EmpDB.Add(new Employee(rnd.Next(DepDB.Count()), $"Имя {i}"));
+                EmpDB.Add(new Employee(rnd.Next(DepDB.Count()), $"Имя {i}", $"Фамилия {i}"));
             }
         }
     }

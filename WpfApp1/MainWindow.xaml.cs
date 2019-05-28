@@ -20,7 +20,17 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        CommonDb db;
+        //1. Создать сущности Employee и Department и заполнить списки сущностей начальными данными.
+        //2. Для списка сотрудников и списка департаментов предусмотреть визуализацию(отображение).
+        //   Это можно сделать, например, с использованием ComboBox или ListView.
+        //3. Предусмотреть редактирование сотрудников и департаментов. Должна быть возможность изменить
+        //   департамент у сотрудника. Список департаментов для выбора можно выводить в ComboBox,
+        //   и все это можно выводить на дополнительной форме.
+        //4. Предусмотреть возможность создания новых сотрудников и департаментов. Реализовать это
+        //   либо на форме редактирования, либо сделать новую форму.
+
+
+    CommonDb db;
 
         public MainWindow()
         {
@@ -34,6 +44,11 @@ namespace WpfApp1
             lbEmpl.ItemsSource = db.EmpDB.Where(
                 w => w.DepID == (cbDep.SelectedValue as Department)?.DepID
                 ) ;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
